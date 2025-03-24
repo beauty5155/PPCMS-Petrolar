@@ -1,0 +1,36 @@
+<div class="content-section">
+    <h2 class="page-title">Stock
+        <div class="page-action">
+            <!-- <button class="btn trash-btn mr-3" type="submit" id='submitBtn'  title="Delete">
+                <i class="las la-trash"></i></button> -->
+            <a routerLink="/dashboard/stockAdd" class="btn-save" title="Add">Add
+                <!-- <i class="las la-plus"></i> -->
+            </a>
+        </div>
+    </h2><br>
+
+    <form [formGroup]="listStockForm">
+        <div class="table-responsive">
+            <table class="display" style="width:100%" cellspacing="0" id="table-stockList">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Morning Reading</th>
+                        <th>Evening Reading</th>
+                        <th>Purchase Qty.</th>
+                        <th>Remaining Qty.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let st of stockList index as i">
+                        <td>{{st.date}}</td>
+                        <td>{{st.m_reading}}</td>
+                        <td>{{st.e_reading}}</td>
+                        <td>{{st.purchase_qty}}</td>
+                        <td>{{st.remaining_qty}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>

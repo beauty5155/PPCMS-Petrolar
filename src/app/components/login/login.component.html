@@ -1,0 +1,62 @@
+<p>login works!</p>
+
+<div class="container">
+    <div class="row no-gutters">
+      <div class="col-lg-4">
+        <div class="login" id="login-section">
+          <form [formGroup]="loginForm" (ngSubmit)="userLogin()" class="login-main">
+            <div class="">
+              <div class="mb-4">
+                <div class="title">LOGIN @</div>
+                <span class="error-msg position-relative">{{errInfo.message}}</span><br><br>
+                
+                <div class="input-group login-input">
+                  <span class="input-group-text">
+                    <i class="las la-envelope input-icon-blue"></i>
+                  </span>
+                  <input type="text" name="name" id="name" value="" class="form-control" formControlName="name"
+                    placeholder="Name" />
+                </div>
+                <span
+                  *ngIf="lfControl['name']!.invalid && (lfControl['name']!.dirty || lfControl['name']!.touched)"
+                  class="error-msg">
+                  <span *ngIf="lfControl['name']!.errors?.['required']">
+                    {{this.appconst.name_msg_required}}
+                  </span>
+                </span>
+
+              </div>
+  
+              <div class="mb-4">
+                <div class="input-group login-input">
+                  <span class="input-group-text"><i class="las la-lock input-icon-blue"></i>
+                  </span>
+                  <input [type]="passwordeye" name="password" id="password" class="form-control"
+                    formControlName="password" placeholder="Password" />
+                </div>
+                <span
+									*ngIf="lfControl['password']!.invalid && (lfControl['password']!.dirty || lfControl['password']!.touched)"
+									class="error-msg">
+									<span *ngIf="lfControl['password']!.errors?.['required']">
+										{{this.appconst.pwd_msg_required}}
+									</span>
+								</span>
+              </div>
+  
+              <div class="mb-4">
+                <a class="login-link" id="forgotpassword">
+                  Forgot your password?</a>
+              </div>
+  
+              <button class="btn btn-login" id="loginbtn" >
+                Login
+              </button>
+  
+            </div>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <router-outlet></router-outlet> -->

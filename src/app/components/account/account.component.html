@@ -1,0 +1,45 @@
+<div class="content-section">
+    <h2 class="page-title">Account List
+        <div class="page-action">
+            <!-- <button class="btn trash-btn mr-3" type="submit" id='submitBtn' title="Delete">
+                <i class="las la-trash"></i></button> -->
+            <a routerLink="/dashboard/accountAdd" class="btn-save" title="Add">Add
+                <!-- <i class="las la-plus"></i> -->
+            </a>
+        </div>
+    </h2>
+    <br>
+
+    <form [formGroup]="listAccountForm">
+        <div class="table-responsive">
+            <table class="display" style="width:100%" cellspacing="0" id="table-accountList">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Bought Qty.</th>
+                        <th>Bought Rate</th>
+                        <th>Bought Total</th>
+                        <th>Sold Qty</th>
+                        <th>Sold Rate</th>
+                        <th>Sold Total</th>
+                        <th>Remaining Qty</th>
+                        <th>Profit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ac of accountList index as i">
+                        <td>{{ac.date}}</td>
+                        <td>{{ac.b_qty}}</td>
+                        <td>{{ac.b_rate}}</td>
+                        <td>{{ac.b_total}}</td>
+                        <td>{{ac.s_qty}}</td>
+                        <td>{{ac.s_rate}}</td>
+                        <td>{{ac.s_total}}</td>
+                        <td>{{ac.r_qty}}</td>
+                        <td>{{ac.profit}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>

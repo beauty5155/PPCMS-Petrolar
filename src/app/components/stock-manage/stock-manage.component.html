@@ -1,0 +1,123 @@
+<form [formGroup]="stockForm" (ngSubmit)="saveStock('save')">
+	<div class="content-section">
+		<h2 class="page-title">
+			<!--  <a (click)="processCancel()" class="back-btn"><i class="las la-arrow-left"></i></a> -->
+			{{operation}} Stock {{recIdStr}}
+		</h2><br>
+
+		<div class="row">
+			<div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>Date<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="date" placeholder="yyyy-mm-dd"
+					maxlength="{{this.appconst.str_len_25}}" />
+				<span *ngIf="cfControl['date']!.invalid && (cfControl['date']!.dirty || cfControl['date']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['date']!.errors?.['required']">
+						{{this.appconst.date_msg_required}}
+					</span>
+					<span *ngIf="cfControl['date']!.errors?.['pattern']">
+						{{this.appconst.date_msg_pattern}}
+					</span>
+					<span *ngIf="cfControl['date']!.errors?.['maxlength']">
+						{{this.appconst.date_msg_maxlen}}
+					</span>
+				</span>
+			</div>
+
+			<div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>Morning Reading<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="m_reading"
+					maxlength="{{this.appconst.str_len_10}}" />
+				<span
+					*ngIf="cfControl['m_reading']!.invalid && (cfControl['m_reading']!.dirty || cfControl['m_reading']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['m_reading']!.errors?.['required']">
+						{{this.appconst.m_reading_msg_required}}
+					</span>
+					<span *ngIf="cfControl['m_reading']!.errors?.['pattern']">
+						{{this.appconst.m_reading_msg_pattern}}
+					</span>
+					<span *ngIf="cfControl['m_reading']!.errors?.['maxlength']">
+						{{this.appconst.m_reading_msg_maxlen}}
+					</span>
+				</span>
+			</div>
+
+			<div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>Evening Reading<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="e_reading"
+					maxlength="{{this.appconst.str_len_8}}" />
+				<span
+					*ngIf="cfControl['e_reading']!.invalid && (cfControl['e_reading']!.dirty || cfControl['e_reading']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['e_reading']!.errors?.['required']">
+						{{this.appconst.e_reading_msg_required}}
+					</span>
+					<span *ngIf="cfControl['e_reading']!.errors?.['pattern']">
+						{{this.appconst.e_reading_msg_pattern}}
+					</span>
+					<span *ngIf="cfControl['e_reading']!.errors?.['maxlength']">
+						{{this.appconst.e_reading_msg_maxlen}}
+					</span>
+				</span>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>Purchase Qty.<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="purchase_qty"
+					maxlength="{{this.appconst.str_len_12}}" />
+				<span
+					*ngIf="cfControl['purchase_qty']!.invalid && (cfControl['purchase_qty']!.dirty || cfControl['purchase_qty']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['purchase_qty']!.errors?.['required']">
+						{{this.appconst.purchase_qty_msg_required}}
+					</span>
+					<span *ngIf="cfControl['purchase_qty']!.errors?.['pattern']">
+						{{this.appconst.purchase_qty_msg_pattern}}
+					</span>
+					<span *ngIf="cfControl['purchase_qty']!.errors?.['maxlength']">
+						{{this.appconst.purchase_qty_msg_maxlen}}
+					</span>
+				</span>
+			</div>
+
+			<div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>Remaining Qty.<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="remaining_qty"
+					maxlength="{{this.appconst.str_len_10}}" />
+				<span
+					*ngIf="cfControl['remaining_qty']!.invalid && (cfControl['remaining_qty']!.dirty || cfControl['remaining_qty']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['remaining_qty']!.errors?.['required']">
+						{{this.appconst.remaining_qty_msg_required}}
+					</span>
+					<span *ngIf="cfControl['remaining_qty']!.errors?.['pattern']">
+						{{this.appconst.remaining_qty_msg_pattern}}
+					</span>
+					<span *ngIf="cfControl['remaining_qty']!.errors?.['maxlength']">
+						{{this.appconst.remaining_qty_msg_maxlen}}
+					</span>
+				</span>
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div class="col-12 text-end">
+				<input type="button" class="btn btn-primary me-3 mb-3" name='Save_Add' (click)="saveStock('saveadd')"
+					[disabled]="stockForm.invalid" value='Save and Add' />
+				<input type="submit" class="btn btn-primary me-3 mb-3" name='Save' value='Save'
+					[disabled]="stockForm.invalid" />
+				<input type="button" class="btn btn-danger me-3 mb-3" name='Cancel' value='Cancel'
+					(click)="processCancel()" />
+				<!-- <input type='button' class='btn btn-blue me-3 mb-3' name='Save_Add' (click)="saveStock('saveadd')"
+					[disabled]="stockForm.invalid" value='Save and Add' />
+				<input type='submit' class='btn btn-blue me-3 mb-3' name='Save' value='Save'
+					[disabled]="stockForm.invalid" />
+				<input type='button' class='btn btn-danger me-3 mb-3' name='cancel' value='Cancel' (click)="processCancel()" /> -->
+			</div>
+		</div>
+	</div>
+</form>

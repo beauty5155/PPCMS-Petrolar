@@ -1,0 +1,10 @@
+
+.content-area {
+    width: calc(100% - 108px);
+	min-height:calc(100vh - 93px);	
+}
+
+.content-area.content-slide {
+    width: calc(100% - 350px);
+	transition: all .3s ease;
+}

@@ -1,0 +1,42 @@
+<div class="content-section">
+    <h2 class="page-title">Sales List
+        <div class="page-action">
+            <!-- <button class="btn trash-btn mr-3" type="submit" id='submitBtn'  title="Delete">
+                <i class="las la-trash"></i></button> -->
+            <a routerLink="/dashboard/salesAdd" class="btn-save" title="Add">Add
+                <!-- <i class="las la-plus"></i> -->
+            </a>
+        </div>
+    </h2><br>
+
+    <form [formGroup]="listSalesForm">
+        <div class="table-responsive">
+            <table class="display" style="width:100%" cellspacing="0" id="table-salesList">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Bill No.</th>
+                        <th>Date</th>
+                        <th>Rate</th>
+                        <th>Quantity</th>
+                        <th>Total Amt.</th>
+                        <th>Paid Amt.</th>
+                        <th>Balance Amt</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let st of salesList index as i">
+                        <td>{{st.cid}}</td>
+                        <td>{{st.bill_no}}</td>
+                        <td>{{st.date}}</td>
+                        <td>{{st.rate}}</td>
+                        <td>{{st.quantity}}</td>
+                        <td>{{st.total_amount}}</td>
+                        <td>{{st.paid_amount}}</td>
+                        <td>{{st.balance_amount}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,109 @@
+<form [formGroup]="accountForm" (ngSubmit)="saveAccount('save')">
+	<div class="content-section">
+		<h2 class="page-title">
+			<!--  <a (click)="processCancel()" class="back-btn"><i class="las la-arrow-left"></i></a> -->
+			{{operation}} Account {{recIdStr}}
+		</h2><br>
+
+		<div class="row">
+			<div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>Date<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="date" placeholder="yyyy-mm-dd"
+					maxlength="{{this.appconst.str_len_25}}" />
+				<span *ngIf="cfControl['date']!.invalid && (cfControl['date']!.dirty || cfControl['date']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['date']!.errors?.['required']">
+						{{this.appconst.date_msg_required}}
+					</span>
+					<span *ngIf="cfControl['date']!.errors?.['pattern']">
+						{{this.appconst.date_msg_pattern}}
+					</span>
+					<span *ngIf="cfControl['date']!.errors?.['maxlength']">
+						{{this.appconst.date_msg_maxlen}}
+					</span>
+				</span>
+				<!-- <span class="text-danger" *ngIf="errInfo.ec == 1402">{{this.errInfo.message}}</span> -->
+			</div>
+
+			<div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>B QTY<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="b_qty"
+					maxlength="{{this.appconst.str_len_10}}" />
+				<span *ngIf="cfControl['b_qty']!.invalid && (cfControl['b_qty']!.dirty || cfControl['b_qty']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['b_qty']!.errors?.['required']">
+						{{this.appconst.b_qty_msg_required}}
+					</span>
+					<span *ngIf="cfControl['b_qty']!.errors?.['maxlength']">
+						{{this.appconst.b_qty_msg_maxlen}}
+					</span>
+				</span>
+			</div>
+
+			<div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>B Rate<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="b_rate"
+					maxlength="{{this.appconst.str_len_8}}" />
+				<span
+					*ngIf="cfControl['b_rate']!.invalid && (cfControl['b_rate']!.dirty || cfControl['b_rate']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['b_rate']!.errors?.['required']">
+						{{this.appconst.b_rate_msg_required}}
+					</span>
+					<span *ngIf="cfControl['b_rate']!.errors?.['pattern']">
+						{{this.appconst.b_rate_msg_pattern}}
+					</span>
+					<span *ngIf="cfControl['b_rate']!.errors?.['maxlength']">
+						{{this.appconst.b_rate_msg_maxlen}}
+					</span>
+				</span>
+			</div>
+		</div>
+
+		<div class="row">
+
+			<div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>Sold Qty<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="s_qty"
+					maxlength="{{this.appconst.str_len_10}}" />
+				<span *ngIf="cfControl['s_qty']!.invalid && (cfControl['s_qty']!.dirty || cfControl['s_qty']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['s_qty']!.errors?.['required']">
+						{{this.appconst.s_qty_msg_required}}
+					</span>
+					<span *ngIf="cfControl['s_qty']!.errors?.['maxlength']">
+						{{this.appconst.s_qty_msg_maxlen}}
+					</span>
+				</span>
+			</div>
+
+			<div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>Sold Rate<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="s_rate"
+					maxlength="{{this.appconst.str_len_10}}" />
+				<span
+					*ngIf="cfControl['s_rate']!.invalid && (cfControl['s_rate']!.dirty || cfControl['s_rate']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['s_rate']!.errors?.['required']">
+						{{this.appconst.s_rate_msg_required}}
+					</span>
+					<span *ngIf="cfControl['s_rate']!.errors?.['maxlength']">
+						{{this.appconst.s_rate_msg_maxlen}}
+					</span>
+				</span>
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div class="col-12 text-end">
+				<input type="button" class="btn btn-primary me-3 mb-3" name='Save_Add' (click)="saveAccount('saveadd')"
+					[disabled]="accountForm.invalid" value='Save and Add' />
+				<input type="submit" class="btn btn-primary me-3 mb-3" name='Save' value='Save'
+					[disabled]="accountForm.invalid" />
+				<input type="button" class="btn btn-danger me-3 mb-3" name='cancel' value='Cancel'
+					(click)="processCancel()" />
+			</div>
+		</div>
+	</div>
+</form>

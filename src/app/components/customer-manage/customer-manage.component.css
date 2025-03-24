@@ -1,0 +1,25 @@
+
+.btn-blue, .btn-blue:hover {
+    color: #fff;
+    padding: .5rem 1rem;
+    font-size: 16px;
+    /* border: 1px solid #091F56; */
+    background:  #b9a704;
+    box-shadow: none;
+    border-radius: 4px;
+	display: inline-block;
+	vertical-align: middle;
+	text-decoration:none;
+}
+/* .btn-blue-outline, .btn-blue-outline:hover {
+    color: #b9a704;
+    padding: .5rem 1rem;
+    font-size: 16px;
+    background: #fff;
+    box-shadow: none;
+    border-radius: 4px;
+	display: inline-block;
+	vertical-align: middle;
+	text-decoration:none;
+} */
+

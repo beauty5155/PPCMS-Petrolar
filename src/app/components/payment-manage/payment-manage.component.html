@@ -1,0 +1,137 @@
+<form [formGroup]="customerDetailsForm" (ngSubmit)="saveCustomer('save')">
+    <div class="content-section">
+        <h2 class="page-title">
+            Details
+            <div class="page-action">
+                <a routerLink="/dashboard/customerAdd" class="btn-save" title="Add"> Allow
+                </a>
+            </div>
+        </h2>
+        <br><br>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+                <label>Name<small class="text-danger"> *</small></label>
+                <input type='text' class="form-control" formControlName="name"
+                    maxlength="{{this.appconst.str_len_100}}" />
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+                <label>Phone<small class="text-danger"> *</small></label>
+                <input type='text' class="form-control" formControlName="phone"
+                    maxlength="{{this.appconst.str_len_15}}" />
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+                <label>Balance<small class="text-danger"> *</small></label>
+                <input type='text' class="form-control" formControlName="balance"
+                    maxlength="{{this.appconst.str_len_12}}" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+                <label>Joining Date<small class="text-danger"> *</small></label>
+                <input type='text' class="form-control" formControlName="joining_date" placeholder="yyyy-mm-dd"
+                    maxlength="{{this.appconst.str_len_100}}" />
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+                <label>Max Value<small class="text-danger"> *</small></label>
+                <input type='text' class="form-control" formControlName="max_value"
+                    maxlength="{{this.appconst.str_len_10}}" />
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+                <label>Address<small class="text-danger"> *</small></label>
+                <textarea class="form-control" formControlName="address" rows="4" cols="50"
+                    maxlength="{{this.appconst.str_len_100}}"></textarea>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+<!-- --------------------------------------------------------------------------------
+    ---------------------------------------------------------------------------------- -->
+
+<form [formGroup]="paymentForm" (ngSubmit)="savePayment('save')">
+    <div class="content-section">
+        <h2 class="page-title">
+            Received Amount
+        </h2><br><br>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+                <label>ID<small class="text-danger"> *</small></label>
+                <input type='text' class="form-control" formControlName="cid" maxlength="{{this.appconst.str_len_25}}"
+                    value="{{customerInfo.cid}}  {{'('}}{{customerInfo.name}}{{')'}}" />
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+                <label>Date<small class="text-danger"> *</small></label>
+                <input type='text' class="form-control" formControlName="date" placeholder="yyyy-mm-dd"
+                    maxlength="{{this.appconst.str_len_25}}" />
+                <span *ngIf="pfControl['date']!.invalid && (pfControl['date']!.dirty || pfControl['date']!.touched)"
+                    class="text-danger">
+                    <span *ngIf="pfControl['date']!.errors?.['required']">
+                        {{this.appconst.date_msg_required}}
+                    </span>
+                    <span *ngIf="pfControl['date']!.errors?.['maxlength']">
+                        {{this.appconst.date_msg_maxlen}}
+                    </span>
+                </span>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+                <label>Paid Amount<small class="text-danger"> *</small></label>
+                <input type='text' class="form-control" formControlName="paid_amount"
+                    maxlength="{{this.appconst.str_len_10}}" />
+                <span
+                    *ngIf="pfControl['paid_amount']!.invalid && (pfControl['paid_amount']!.dirty || pfControl['paid_amount']!.touched)"
+                    class="text-danger">
+                    <span *ngIf="pfControl['paid_amount']!.errors?.['required']">
+                        {{this.appconst.paid_amount_msg_required}}
+                    </span>
+                    <span *ngIf="pfControl['paid_amount']!.errors?.['maxlength']">
+                        {{this.appconst.paid_amount_msg_maxlen}}
+                    </span>
+                </span>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2">
+                <br>
+                <input type="submit" class="btn btn-primary me-3 mb-3" name='Save' value='Save' (click)="onClick()"
+                    [disabled]="paymentForm.invalid" />
+                <input type="button" class="btn btn-danger me-3 mb-3" name='Cancel' value='Cancel' (click)="processCancel()" />
+            </div>
+
+        </div>
+    </div>
+</form>
+
+<!-- -=========================================================================================================
+============================================================================================================= -->
+
+<div class="content-section">
+    <h2 class="page-title">Amount Received Details</h2><br><br>
+
+    <form [formGroup]="listPaymentForm">
+        <div class="table-responsive">
+            <table class="display" style="width:100%" cellspacing="0" id="table-paymentList">
+                <thead>
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Date</th>
+                        <th>Paid Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ac of paymentList index as i">
+                        <td>{{ac.cid+ ' k'}}</td>
+                        <td>{{ac.date}}</td>
+                        <td>{{ac.paid_amount}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>

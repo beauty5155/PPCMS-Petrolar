@@ -1,0 +1,149 @@
+<form [formGroup]="salesForm" (ngSubmit)="saveSales('save')">
+	<div class="content-section">
+		 <h2 class="page-title"> 
+          <!--  <a (click)="processCancel()" class="back-btn"><i class="las la-arrow-left"></i></a> -->
+            {{operation}} {{recIdStr}}</h2><br>
+
+		<div class="row">
+			<div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>Date<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="date"
+					placeholder="yyyy-mm-dd" maxlength="{{this.appconst.str_len_25}}" />
+				<span *ngIf="cfControl['date']!.invalid && (cfControl['date']!.dirty || cfControl['date']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['date']!.errors?.['required']">
+						{{this.appconst.date_msg_required}}
+					</span>
+					<span *ngIf="cfControl['date']!.errors?.['pattern']">
+						{{this.appconst.date_msg_pattern}}
+					</span>
+					<span *ngIf="cfControl['date']!.errors?.['maxlength']">
+						{{this.appconst.date_msg_maxlen}}
+					</span>
+				</span>
+			</div>
+
+            <div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>Customer ID<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="cid"
+					maxlength="{{this.appconst.str_len_10}}" />
+					<span *ngIf="cfControl['cid']!.invalid && (cfControl['cid']!.dirty || cfControl['cid']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['cid']!.errors?.['required']">
+						{{this.appconst.cid_msg_required}}
+					</span>
+					<!-- <span *ngIf="cfControl['cid']!.errors?.['pattern']">
+						{{this.appconst.cid_msg_pattern}}
+					</span>
+					<span *ngIf="cfControl['cid']!.errors?.['maxlength']">
+						{{this.appconst.cid_msg_maxlen}}
+					</span> -->
+				</span>
+			</div>
+
+			<div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>Rate<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="rate"
+					maxlength="{{this.appconst.str_len_8}}" />
+					<span *ngIf="cfControl['rate']!.invalid && (cfControl['rate']!.dirty || cfControl['rate']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['rate']!.errors?.['required']">
+						{{this.appconst.rate_msg_required}}
+					</span>
+					<span *ngIf="cfControl['rate']!.errors?.['pattern']">
+						{{this.appconst.rate_msg_pattern}}
+					</span>
+					<span *ngIf="cfControl['rate']!.errors?.['maxlength']">
+						{{this.appconst.rate_msg_maxlen}}
+					</span>
+				</span>
+			</div>
+
+			<div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>Quantity<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="quantity"
+					maxlength="{{this.appconst.str_len_12}}" />
+				<span *ngIf="cfControl['quantity']!.invalid && (cfControl['quantity']!.dirty || cfControl['quantity']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['quantity']!.errors?.['required']">
+						{{this.appconst.quantity_msg_required}}
+					</span>
+					<span *ngIf="cfControl['quantity']!.errors?.['pattern']">
+						{{this.appconst.quantity_msg_pattern}}
+					</span>
+					<span *ngIf="cfControl['quantity']!.errors?.['maxlength']">
+						{{this.appconst.quantity_msg_maxlen}}
+					</span>
+				</span>
+			</div>
+
+		</div>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>Total Amount<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="total_amount"
+					maxlength="{{this.appconst.str_len_10}}" />
+				<span *ngIf="cfControl['total_amount']!.invalid && (cfControl['total_amount']!.dirty || cfControl['total_amount']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['total_amount']!.errors?.['required']">
+						{{this.appconst.total_amount_msg_required}}
+					</span>
+					<span *ngIf="cfControl['total_amount']!.errors?.['pattern']">
+						{{this.appconst.total_amount_msg_pattern}}
+					</span>
+					<span *ngIf="cfControl['total_amount']!.errors?.['maxlength']">
+						{{this.appconst.total_amount_msg_maxlen}}
+					</span>
+				</span>
+			</div>
+
+            <div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>Paid Amount<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="paid_amount"
+					maxlength="{{this.appconst.str_len_10}}" />
+				<span *ngIf="cfControl['paid_amount']!.invalid && (cfControl['paid_amount']!.dirty || cfControl['paid_amount']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['paid_amount']!.errors?.['required']">
+						{{this.appconst.paid_amount_msg_required}}
+					</span>
+					<span *ngIf="cfControl['paid_amount']!.errors?.['pattern']">
+						{{this.appconst.paid_amount_msg_pattern}}
+					</span>
+					<span *ngIf="cfControl['paid_amount']!.errors?.['maxlength']">
+						{{this.appconst.paid_amount_msg_maxlen}}
+					</span>
+				</span>
+			</div>
+
+			<div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>Balance Amount<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="balance_amount"
+					maxlength="{{this.appconst.str_len_10}}" />
+				<span *ngIf="cfControl['balance_amount']!.invalid && (cfControl['balance_amount']!.dirty || cfControl['balance_amount']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['balance_amount']!.errors?.['required']">
+						{{this.appconst.balance_amount_msg_required}}
+					</span>
+					<span *ngIf="cfControl['balance_amount']!.errors?.['pattern']">
+						{{this.appconst.balance_amount_msg_pattern}}
+					</span>
+					<span *ngIf="cfControl['balance_amount']!.errors?.['maxlength']">
+						{{this.appconst.balance_amount_msg_maxlen}}
+					</span>
+				</span>
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div class="col-12 text-end">
+                <input type="button" class="btn btn-primary me-3 mb-3" name='Save_Add' (click)="saveSales('saveadd')"
+					[disabled]="salesForm.invalid" value='Save and Add' />
+				<input type="submit" class="btn btn-primary me-3 mb-3" name='Save' value='Save'
+					[disabled]="salesForm.invalid" />
+				<input type="button" class="btn btn-danger mr-3 mb-3" name='cancel' value='Cancel' (click)="processCancel()" />
+			</div>
+		</div>
+	</div>
+</form>

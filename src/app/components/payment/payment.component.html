@@ -1,0 +1,25 @@
+<form [formGroup]="paymentForm" (ngSubmit)="saveCustomer('save')">
+    <div class="content-section">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+                <label>Enter Customer ID<small class="text-danger"> *</small></label>
+                <!-- <input type='text' class="form-control" formControlName="cid" value=""
+                    maxlength="{{this.appconst.str_len_25}}" /> -->
+
+                <!-- (change)="onCourseSelected($event)" -->
+                <select class="form-control form-control-sm" formControlName="cid" (change)="onCustomerIdSelected($event)">
+                    <option value="">--Select Customer--</option>
+                    <option *ngFor="let tp of customerList" value="{{tp.cid}}">{{tp.cid+' ('+tp.name+')'}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2">
+                <br>
+                <a (click)="onClickCustomerId()" class="btn-save" title="GetDetails"> Get Details</a>
+                <!-- <input (click)="onClickCustomerId()" class="btn-save" value="Get Details" /> -->
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- ----------------------------------------------------------------------------- -->

@@ -1,0 +1,119 @@
+<form [formGroup]="customerForm" (ngSubmit)="saveCustomer('save')">
+	<div class="content-section">
+		 <h2 class="page-title"> 
+          <!--  <a (click)="processCancel()" class="back-btn"><i class="las la-arrow-left"></i></a> -->
+            {{operation}} Customer {{recIdStr}}</h2><br>
+
+		<div class="row">
+			<div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>Name<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="name"
+					maxlength="{{this.appconst.str_len_100}}" />
+				<span *ngIf="cfControl['name']!.invalid && (cfControl['name']!.dirty || cfControl['name']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['name']!.errors?.['required']">
+						{{this.appconst.name_msg_required}}
+					</span>
+					<span *ngIf="cfControl['name']!.errors?.['pattern']">
+						{{this.appconst.name_msg_pattern}}
+					</span>
+					<span *ngIf="cfControl['name']!.errors?.['maxlength']">
+						{{this.appconst.name_msg_maxlen}}
+					</span>
+				</span>
+				<!-- <span class="text-danger" *ngIf="errInfo.ec == 1402">{{this.errInfo.message}}</span> -->
+			</div>
+
+            <div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>Phone<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="phone"
+					maxlength="{{this.appconst.str_len_10}}" />
+				<span *ngIf="cfControl['phone']!.invalid && (cfControl['phone']!.dirty || cfControl['phone']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['phone']!.errors?.['required']">
+						{{this.appconst.phone_msg_required}}
+					</span>
+					<span *ngIf="cfControl['phone']!.errors?.['maxlength']">
+						{{this.appconst.phone_msg_maxlen}}
+					</span>
+				</span>
+			</div>
+
+			<div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>Password<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="password"
+				minlength="{{this.appconst.str_len_8}}" maxlength="{{this.appconst.str_len_12}}" />
+				<span *ngIf="cfControl['password']!.invalid && (cfControl['password']!.dirty || cfControl['password']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['password']!.errors?.['required']">
+						{{this.appconst.password_msg_required}}
+					</span>
+					<span *ngIf="cfControl['password']!.errors?.['pattern']">
+						{{this.appconst.password_msg_pattern}}
+					</span>
+					<span *ngIf="cfControl['password']!.errors?.['maxlength']">
+						{{this.appconst.password_msg_maxlen}}
+					</span>
+				</span>
+			</div>
+		</div>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>Balance<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="balance"
+					maxlength="{{this.appconst.str_len_12}}" />
+				<span *ngIf="cfControl['balance']!.invalid && (cfControl['balance']!.dirty || cfControl['balance']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['balance']!.errors?.['required']">
+						{{this.appconst.balance_msg_required}}
+					</span>
+					<span *ngIf="cfControl['balance']!.errors?.['maxlength']">
+						{{this.appconst.balance_msg_maxlen}}
+					</span>
+				</span>
+			</div>
+
+            <div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>Max Value<small class="text-danger"> *</small></label>
+				<input type='text' class="form-control" formControlName="max_value"
+					maxlength="{{this.appconst.str_len_10}}" />
+				<span *ngIf="cfControl['max_value']!.invalid && (cfControl['max_value']!.dirty || cfControl['max_value']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['max_value']!.errors?.['required']">
+						{{this.appconst.max_value_msg_required}}
+					</span>
+					<span *ngIf="cfControl['max_value']!.errors?.['maxlength']">
+						{{this.appconst.max_value_msg_maxlen}}
+					</span>
+				</span>
+			</div>
+
+            <div class="col-lg-3 col-md-4 col-sm-4 mb-5">
+				<label>Address<small class="text-danger"> *</small></label>
+				<textarea class="form-control" formControlName="address" rows="4" cols="50"
+					maxlength="{{this.appconst.str_len_100}}"></textarea>
+				<span *ngIf="cfControl['address']!.invalid && (cfControl['address']!.dirty || cfControl['address']!.touched)"
+					class="text-danger">
+					<span *ngIf="cfControl['address']!.errors?.['required']">
+						{{this.appconst.address_msg_required}}
+					</span>
+					<span *ngIf="cfControl['address']!.errors?.['maxlength']">
+						{{this.appconst.address_msg_maxlen}}
+					</span>
+				</span>
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div class="col-12 text-end">
+                <input type="button" class="btn btn-primary me-3 mb-3" name='Save_Add' (click)="saveCustomer('saveadd')"
+					[disabled]="customerForm.invalid" value='Save and Add' />
+				<input type="submit" class="btn btn-primary me-3 mb-3" name='Save' value='Save'
+					[disabled]="customerForm.invalid" />
+				<input type="button" class="btn btn-danger me-3 mb-3" name='cancel' value='Cancel' (click)="processCancel()" />
+			</div>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,40 @@
+<div class="content-section">
+    <h2 class="page-title">Regular Customer List
+        <div class="page-action">
+            <!-- <button class="btn trash-btn mr-3" type="submit" id='submitBtn'  title="Delete">
+                <i class="las la-trash"></i></button>-->
+            <a routerLink="/dashboard/customerAdd" class="btn-save" title="Add"> ADD
+                <!-- <i class="las la-plus"></i> -->
+            </a> 
+        </div>
+    </h2><br>
+
+    <form [formGroup]="listRegularCustomerForm">
+        <div class="table-responsive">
+            <table class="display" style="width:100%" cellspacing="0" id="table-regCusContactList">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Joining Date</th>
+                        <th>Balance</th>
+                        <th>Max Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let rc of regCusContactList index as i">
+                        <td>{{rc.cid}}</td>
+                        <td>{{rc.name}}</td>
+                        <td>{{rc.address}}</td>
+                        <td>{{rc.phone}}</td>
+                        <td>{{rc.joining_date}}</td>
+                        <td>{{rc.balance}}</td>
+                        <td>{{rc.max_value}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
